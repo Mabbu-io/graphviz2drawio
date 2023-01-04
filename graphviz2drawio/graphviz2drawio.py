@@ -25,6 +25,7 @@ def convert(graph_to_convert, layout_prog="dot"):
     svg_graph = graph.draw(prog=layout_prog, format="svg")
     nodes, edges = SvgParser(svg_graph).get_nodes_and_edges()
     [e.enrich_from_graph(graph_edges[e.gid]) for e in edges]
+    print(nodes.values())
     [n.enrich_from_graph(graph_nodes[n.gid]) for n in nodes.values()]
 
     mx_graph = MxGraph(nodes, edges)
