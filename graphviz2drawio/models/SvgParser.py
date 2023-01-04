@@ -23,7 +23,7 @@ class SvgParser:
         for g in root:
             if SVG.is_tag(g, "g"):
                 title = SVG.get_title(g)
-                if g.attrib["class"] == "node":
+                if g.attrib["class"] == "node" or g.attrib["class"] == "cluster":
                     nodes[title] = node_factory.from_svg(g)
                 elif g.attrib["class"] == "edge":
                     edges.append(edge_factory.from_svg(g))
