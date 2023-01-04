@@ -21,7 +21,7 @@ def convert(graph_to_convert, layout_prog="dot"):
         for e in list37(graph.edges_iter())
     }
     graph_nodes = {n: list37(n.attr.iteritems()) for n in list37(graph.nodes_iter())}
-    graph_subgraphs = {s: list37(s.attr.iteritems()) for s in list37(graph.subgraphs_iter())}
+    graph_subgraphs = {s: list37(s.graph_attr.iteritems()) for s in list37(graph.subgraphs_iter())}
     print(graph_subgraphs)
     svg_graph = graph.draw(prog=layout_prog, format="svg")
     nodes, edges = SvgParser(svg_graph).get_nodes_and_edges()
