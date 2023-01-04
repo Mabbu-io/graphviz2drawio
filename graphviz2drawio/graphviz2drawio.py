@@ -21,12 +21,12 @@ def convert(graph_to_convert, layout_prog="dot"):
         for e in list37(graph.edges_iter())
     }
     graph_nodes = {n: list37(n.attr.iteritems()) for n in list37(graph.nodes_iter())}
-
+    print(graph_nodes)
     svg_graph = graph.draw(prog=layout_prog, format="svg")
     nodes, edges = SvgParser(svg_graph).get_nodes_and_edges()
     [e.enrich_from_graph(graph_edges[e.gid]) for e in edges]
-    print(nodes.values())
     [n.enrich_from_graph(graph_nodes[n.gid]) for n in nodes.values()]
+    
 
     mx_graph = MxGraph(nodes, edges)
     return mx_graph.value()

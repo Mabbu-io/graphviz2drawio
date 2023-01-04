@@ -18,14 +18,15 @@ class SvgParser:
         edge_factory = EdgeFactory(coords)
 
         nodes = OrderedDict()
+        new_nodes = OrderedDict()
         edges = []
 
         for g in root:
             if SVG.is_tag(g, "g"):
                 title = SVG.get_title(g)
-                if g.attrib["class"] == "node" or g.attrib["class"] == "cluster":
+                if g.attrib["class"] == "node":
                     nodes[title] = node_factory.from_svg(g)
                 elif g.attrib["class"] == "edge":
                     edges.append(edge_factory.from_svg(g))
 
-        return nodes, edges
+        return nodes, edges, new_nodes
